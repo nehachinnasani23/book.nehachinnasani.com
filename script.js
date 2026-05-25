@@ -45,9 +45,9 @@ if (rotator) {
   const comments = Array.from(rotator.querySelectorAll(".comment-card"));
   const dots = document.querySelector(".comments-dots");
   let activeComment = 0;
-  let switchTimer;
 
   comments.forEach((comment, index) => {
+    comment.dataset.commentNumber = String(index + 1).padStart(2, "0");
     comment.classList.toggle("is-active", index === activeComment);
 
     if (dots) {
@@ -67,13 +67,9 @@ if (rotator) {
     const previousComment = activeComment;
     comments[previousComment].classList.remove("is-active");
     dotItems[previousComment]?.classList.remove("is-active");
-    window.clearTimeout(switchTimer);
-
-    switchTimer = window.setTimeout(() => {
-      activeComment = index;
-      comments[activeComment].classList.add("is-active");
-      dotItems[activeComment]?.classList.add("is-active");
-    }, 560);
+    activeComment = index;
+    comments[activeComment].classList.add("is-active");
+    dotItems[activeComment]?.classList.add("is-active");
   };
 
   if (comments.length > 1) {

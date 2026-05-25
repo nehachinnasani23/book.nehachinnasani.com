@@ -474,13 +474,12 @@ h1 {
   max-width: 920px;
   min-height: 260px;
   margin-inline: auto;
-  counter-reset: reader-comment;
 }
 
 .comment-card {
   position: absolute;
   inset: 0;
-  display: grid;
+  display: none;
   align-content: center;
   min-height: 240px;
   margin: 0;
@@ -494,26 +493,31 @@ h1 {
   border: 1px solid rgba(16, 34, 65, 0.13);
   border-radius: 8px;
   box-shadow: 0 14px 34px rgba(16, 34, 65, 0.09);
-  counter-increment: reader-comment;
-  transition:
-    opacity 520ms ease,
-    transform 520ms ease,
-    visibility 0s linear 520ms;
 }
 
 .comment-card.is-active {
+  display: grid;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0) scale(1);
-  transition:
-    opacity 520ms ease,
-    transform 520ms ease,
-    visibility 0s;
+  animation: commentEnter 520ms ease both;
+}
+
+@keyframes commentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .comment-card::before {
-  content: counter(reader-comment, decimal-leading-zero);
+  content: attr(data-comment-number);
   position: absolute;
   top: 22px;
   left: 22px;
