@@ -487,6 +487,7 @@ h1 {
   padding: 22px 24px 22px 78px;
   overflow: hidden;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   transform: translateY(18px) scale(0.985);
   background: rgba(255, 250, 240, 0.86);
@@ -496,13 +497,19 @@ h1 {
   counter-increment: reader-comment;
   transition:
     opacity 520ms ease,
-    transform 520ms ease;
+    transform 520ms ease,
+    visibility 0s linear 520ms;
 }
 
 .comment-card.is-active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   transform: translateY(0) scale(1);
+  transition:
+    opacity 520ms ease,
+    transform 520ms ease,
+    visibility 0s;
 }
 
 .comment-card::before {
