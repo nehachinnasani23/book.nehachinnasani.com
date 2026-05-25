@@ -38,3 +38,37 @@ copyButtons.forEach((button) => {
     }
   });
 });
+
+const rotator = document.querySelector("[data-comments-rotator]");
+
+if (rotator) {
+  const comments = Array.from(rotator.querySelectorAll(".comment-card"));
+  const dots = document.querySelector(".comments-dots");
+  let activeComment = 0;
+
+  comments.forEach((comment, index) => {
+    comment.classList.toggle("is-active", index === activeComment);
+
+    if (dots) {
+      const dot = document.createElement("span");
+      dot.classList.toggle("is-active", index === activeComment);
+      dots.appendChild(dot);
+    }
+  });
+
+  const dotItems = dots ? Array.from(dots.children) : [];
+
+  const showComment = (index) => {
+    comments[activeComment].classList.remove("is-active");
+    dotItems[activeComment]?.classList.remove("is-active");
+    activeComment = index;
+    comments[activeComment].classList.add("is-active");
+    dotItems[activeComment]?.classList.add("is-active");
+  };
+
+  if (comments.length > 1) {
+    setInterval(() => {
+      showComment((activeComment + 1) % comments.length);
+    }, 4200);
+  }
+}

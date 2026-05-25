@@ -469,25 +469,40 @@ h1 {
   letter-spacing: 0;
 }
 
-.comments-feed {
-  display: grid;
-  gap: 14px;
+.comments-rotator {
+  position: relative;
   max-width: 920px;
+  min-height: 260px;
   margin-inline: auto;
   counter-reset: reader-comment;
 }
 
 .comment-card {
-  position: relative;
-  min-height: 0;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  min-height: 240px;
   margin: 0;
   padding: 22px 24px 22px 78px;
   overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.985);
   background: rgba(255, 250, 240, 0.86);
   border: 1px solid rgba(16, 34, 65, 0.13);
   border-radius: 8px;
   box-shadow: 0 14px 34px rgba(16, 34, 65, 0.09);
   counter-increment: reader-comment;
+  transition:
+    opacity 520ms ease,
+    transform 520ms ease;
+}
+
+.comment-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
 }
 
 .comment-card::before {
@@ -538,6 +553,28 @@ h1 {
   background:
     linear-gradient(135deg, rgba(189, 45, 50, 0.1), transparent 48%),
     var(--paper);
+}
+
+.comments-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.comments-dots span {
+  width: 8px;
+  height: 8px;
+  background: rgba(16, 34, 65, 0.24);
+  border-radius: 999px;
+  transition:
+    width 240ms ease,
+    background 240ms ease;
+}
+
+.comments-dots span.is-active {
+  width: 28px;
+  background: var(--red);
 }
 
 .share-section {
@@ -817,9 +854,12 @@ h1 {
     flex-direction: column;
   }
 
-  .comments-feed,
   .social-grid {
     grid-template-columns: 1fr;
+  }
+
+  .comments-rotator {
+    min-height: 360px;
   }
 
   .comment-card {
