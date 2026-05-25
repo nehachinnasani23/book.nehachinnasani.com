@@ -176,7 +176,7 @@ a {
   inset: 0;
   z-index: -2;
   background-image: url("assets/book-cover-front.jpeg");
-  background-position: 74% 42%;
+  background-position: 82% 42%;
   background-size: min(780px, 72vw) auto;
   background-repeat: no-repeat;
   animation: coverFloat 9s ease-in-out infinite;
