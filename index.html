@@ -55,7 +55,17 @@
               rel="noopener"
               >Open Full PDF</a
             >
+            <button
+              class="button button-secondary"
+              type="button"
+              data-copy-link="https://book.nehachinnasani.com/"
+              data-feedback-target="#hero-copy-feedback"
+              data-copy-message="Book link copied: https://book.nehachinnasani.com/"
+            >
+              Copy Link
+            </button>
           </div>
+          <p class="copy-feedback hero-copy-feedback" id="hero-copy-feedback" aria-live="polite"></p>
           <p class="author-line">By Neha Chinnasani</p>
         </div>
       </section>
@@ -145,10 +155,6 @@
           <p>
             Share the book with them or copy the link for your next post.
           </p>
-          <div class="share-link-card" aria-label="Book website link">
-            <span>Book link</span>
-            <strong id="book-share-link">book.nehachinnasani.com</strong>
-          </div>
         </div>
 
         <div class="share-panel" aria-label="Share and subscribe actions">
@@ -177,16 +183,18 @@
               </a>
               <a
                 class="social-link instagram"
-                href="#book-share-link"
+                href="#share"
                 role="button"
                 data-copy-link="https://book.nehachinnasani.com/"
+                data-feedback-target="#share-copy-feedback"
+                data-copy-message="Book link copied. Paste it into your Instagram post, story, or bio."
                 aria-label="Copy book link for Instagram"
               >
                 <img src="assets/social-instagram.svg" alt="" />
                 <span>Instagram</span>
               </a>
             </div>
-            <p class="copy-feedback" aria-live="polite"></p>
+            <p class="copy-feedback" id="share-copy-feedback" aria-live="polite"></p>
           </div>
         </div>
       </section>

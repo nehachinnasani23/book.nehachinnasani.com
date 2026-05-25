@@ -257,6 +257,8 @@ h1 {
   padding: 13px 20px;
   border: 2px solid transparent;
   border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
   font-weight: 800;
   text-decoration: none;
   transition:
@@ -483,30 +485,6 @@ h1 {
   font-size: 1.06rem;
 }
 
-.share-link-card {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 100%;
-  margin-top: 26px;
-  padding: 12px 14px;
-  color: var(--navy);
-  background: rgba(255, 250, 240, 0.76);
-  border: 1px solid rgba(16, 34, 65, 0.14);
-  border-radius: 8px;
-}
-
-.share-link-card span {
-  color: var(--red-dark);
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.share-link-card strong {
-  font-size: clamp(0.96rem, 2vw, 1.1rem);
-}
-
 .share-panel {
   display: grid;
   gap: 14px;
@@ -582,6 +560,10 @@ h1 {
   color: var(--red-dark);
   font-size: 0.92rem;
   font-weight: 800;
+}
+
+.hero-copy-feedback {
+  margin-top: 14px;
 }
 
 .site-footer {
@@ -729,14 +711,8 @@ h1 {
     flex-direction: column;
   }
 
-  .share-link-card,
   .social-grid {
     grid-template-columns: 1fr;
-  }
-
-  .share-link-card {
-    display: grid;
-    gap: 4px;
   }
 }
 
